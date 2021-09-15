@@ -1,3 +1,4 @@
+/* eslint-disable react/no-unused-state */
 /* eslint-disable camelcase */
 /* eslint-disable no-undef */
 import { Component } from 'react';
