@@ -3,7 +3,7 @@ import {
 } from '../actions/constant';
 
 const defaultState = { exercise: {}, status: EXERCISE, error: null };
-const exerciseReducer = (state=defaultState, action) => {
+const exerciseReducer = (state = defaultState, action) => {
   switch (action.type) {
     case SUCCESS_EXERCISE:
       return {
