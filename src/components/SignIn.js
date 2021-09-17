@@ -9,6 +9,7 @@ class SignIn extends Component {
     super(props);
     this.state = {
       name: '',
+      email: '',
       password_digest: '',
     };
     this.handleChange = this.handleChange.bind(this);
@@ -17,12 +18,14 @@ class SignIn extends Component {
 
   handleChange=(event) => {
     const { name, value } = event.target;
-    this.setState = {
+    this.setState({
       [name]: value,
-    };
+    });
   }
 
   handleSubmit=(event) => {
+    const { name, password_digest } = this.state;
+
     axios.post('http://localhost:3000/signin',
       {
         user: {
@@ -42,13 +45,14 @@ class SignIn extends Component {
   }
 
   render() {
-    const { name } = this.state;
+    const { name, password_digest } = this.state;
     return (
       <div>
         <h1>Sign up</h1>
         <form onSubmit={this.handleSubmit}>
-          <input placeholder="name" type="text" value={name} onChange={this.handleChange} />
-          <input placeholder="password_digest" type="text" value={password_digest} onChange={this.handleChange} />
+          <input placeholder="name" type="text" name="name" value={name} onChange={(e) => this.handleChange(e)} />
+          <input placeholder="email" type="text" name="name" value={name} onChange={(e) => this.handleChange(e)} />
+          <input placeholder="password_digest" type="password" name="password_digest" value={password_digest} onChange={this.handleChange} />
           <button type="submit"> submit</button>
         </form>
       </div>

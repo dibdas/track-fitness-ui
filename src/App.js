@@ -8,9 +8,9 @@ function App() {
   return (
     <>
       <BrowserRouter>
-        <SignIn />
-        <Login />
         <Home />
+        <Login />
+        <SignIn />
         <Navbar />
       </BrowserRouter>
     </>

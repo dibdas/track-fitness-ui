@@ -9,7 +9,7 @@ class Navbar extends React.Component {
 
       <footer className="d-flex col-12 text-center flex-row">
         <Link className="text-decoration-none flex-column border border-1 col-3 flex-end">dashboard</Link>
-        <Link className="text-decoration-none flex-column border border-1 col-3 ">Add Measure</Link>
+        <Link to="/ExerciseForm" className="text-decoration-none flex-column border border-1 col-3 ">Add Measure</Link>
         <Link className="text-decoration-none flex-column border border-1 col-3 ">Pogress</Link>
         <Link className="text-decoration-none flex-column border border-1 col-3 ">more</Link>
       </footer>

@@ -40,4 +40,4 @@ const postmeasurement = async (id) => {
   }
 };
 
-export { measurement, exercise,postmeasurement };
+export { measurement, exercise, postmeasurement };

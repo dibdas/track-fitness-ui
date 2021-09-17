@@ -1,13 +1,14 @@
+/* eslint-disable react/no-unused-state */
 /* eslint-disable no-restricted-globals */
 import { Component } from 'react';
-
 import axios from 'axios';
 
 class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
+      email: '',
+      password_digest: '',
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -15,12 +16,13 @@ class Login extends Component {
 
   handleChange=(event) => {
     const { name, value } = event.target;
-    this.setState = {
+    this.setState({
       [name]: value,
-    };
+    });
   }
 
   handleSubmit=(event) => {
+    const { name } = event.target;
     axios.post('http://localhost:3000/login',
       {
         user: {
@@ -41,9 +43,10 @@ class Login extends Component {
     const { name } = this.state;
     return (
       <div>
-        <h1>LOGin</h1>
+        <h1>login</h1>
         <form onSubmit={this.handleSubmit}>
-          <input placeholder="name" type="text" value={name} onChange={this.handleChange} />
+          <input placeholder="email" type="text" value={name} name="email" onChange={(e) => this.handleChange(e)} />
+          <input placeholder="password" type="text" value={name} name="password" onChange={(e) => this.handleChange(e)} />
           <button type="submit"> submit</button>
         </form>
       </div>
