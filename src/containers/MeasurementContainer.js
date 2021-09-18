@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-expressions */
+/* eslint-disable import/no-named-as-default-member */
 import { connect } from 'react-redux';
 import { exercise, postmeasurement, measurement } from '../actions/api';
 import Measurement from '../components/Measurement';

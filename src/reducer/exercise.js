@@ -1,5 +1,7 @@
+/* eslint-disable import/named */
+/* eslint-disable default-case */
 import {
-  ERROR_EXERCISE, SUCCESS_EXERCISE, EXERCISE,
+  ERROR_EXERCISE, SUCCESS_EXERCISE, EXERCISE, SUCCESS,
 } from '../actions/constant';
 
 const defaultState = { exercise: {}, status: EXERCISE, error: null };

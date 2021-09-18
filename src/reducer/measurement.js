@@ -1,6 +1,11 @@
+/* eslint-disable consistent-return */
+/* eslint-disable no-undef */
+/* eslint-disable import/named */
+/* eslint-disable default-case */
+// eslint-disable-next-line no-unused-vars
 import { measurement } from '../actions/api';
 import {
-  errormeasure, successmeasure, SUCCESS_MEASUREMENT, ERROR_MEASUREMENT,
+  SUCCESS_MEASUREMENT, ERROR_MEASUREMENT, SUCCESS,
 } from '../actions/constant';
 
 const defaultState = { measurement: {}, status: Measurement, error: null };

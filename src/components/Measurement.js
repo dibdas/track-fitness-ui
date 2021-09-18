@@ -2,7 +2,6 @@ import ExeciseForm from "./ExerciseForm";
 import PropTypes from 'prop-types';
 
 const Measurement = ({exercises})=> {
-    const 
     const submitForm=(event)=>{
         event.preventDefault();
         const req = Object.keys(Measurement).map((key)=>Measurement.post({
