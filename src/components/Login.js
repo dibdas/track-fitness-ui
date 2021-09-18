@@ -27,6 +27,7 @@ class Login extends Component {
       email: username,
       password: passwd,
     });
+    console.log('http://localhost:3000/login');
     fetch('http://localhost:3000/login', {
       mode: 'no-cors',
       method: 'POST',
@@ -37,8 +38,8 @@ class Login extends Component {
       body: user,
     })
       .then((response) => {
-        console.log('created');
-        if (response.data.loggedin === 'created') {
+        if (response.data === 'created') {
+          console.log(response.data);
           this.handleSuccessfulAuth(response.data);
         }
       })

@@ -1,3 +1,4 @@
+// eslint-disable-next-line no-unused-vars
 const exercise = async (id) => {
   const url = 'http://localhost:3000/exercise/id';
   const response = await fetch(url);
@@ -9,6 +10,7 @@ const exercise = async (id) => {
   throw Error(404);
 };
 
+// eslint-disable-next-line no-unused-vars
 const measurement = async (id) => {
   const url = 'http://localhost:3000/measurements/id';
   const response = await fetch(url);
