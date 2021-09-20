@@ -25,19 +25,21 @@ class SignUp extends Component {
 
   handleSubmit=(event) => {
     const { name, email, password_digest } = this.state;
-
-    axios.post('http://localhost:3000/signup',
-      {
-        user: {
-          name,
-          email,
-          password_digest,
-        },
-      }, { withCredentials: true }).then((response) => {
-      if (response.data.status === 'created') {
-        this.handleSuccessfulAuth(response.data);
-      }
+    const user = {
+      name,
+      email,
+      password: password_digest,
+    };
+    axios({
+      method: 'post',
+      url: 'http://localhost:3000/signup/',
+      data: user,
     })
+      .then((response) => {
+        if (response.data.status === 'created') {
+          this.handleSuccessfulAuth(response.data);
+        }
+      })
       .catch((error) => {
         console.log('signup error', error);
       });
