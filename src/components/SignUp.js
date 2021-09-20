@@ -4,7 +4,7 @@
 import { Component } from 'react';
 import axios from 'axios';
 
-class SignIn extends Component {
+class SignUp extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -24,12 +24,13 @@ class SignIn extends Component {
   }
 
   handleSubmit=(event) => {
-    const { name, password_digest } = this.state;
+    const { name, email, password_digest } = this.state;
 
-    axios.post('http://localhost:3000/signin',
+    axios.post('http://localhost:3000/signup',
       {
         user: {
           name,
+          email,
           password_digest,
         },
       }, { withCredentials: true }).then((response) => {
@@ -38,25 +39,27 @@ class SignIn extends Component {
       }
     })
       .catch((error) => {
-        console.log('signin error', error);
+        console.log('signup error', error);
       });
-    event.preventDefault();
     event.preventDefault();
   }
 
   render() {
-    const { name, password_digest } = this.state;
+    const { name, email, password_digest } = this.state;
     return (
       <div>
         <h1>Sign up</h1>
         <form onSubmit={this.handleSubmit}>
-          <input placeholder="name" type="text" name="name" value={name} onChange={(e) => this.handleChange(e)} />
-          <input placeholder="email" type="text" name="name" value={name} onChange={(e) => this.handleChange(e)} />
+          <input placeholder="name" type="text" value={name} name="name" onChange={(e) => this.handleChange(e)} />
+          <br />
+          <input placeholder="email" type="text" value={email} name="email" onChange={(e) => this.handleChange(e)} />
+          <br />
           <input placeholder="password_digest" type="password" name="password_digest" value={password_digest} onChange={this.handleChange} />
+          <br />
           <button type="submit"> submit</button>
         </form>
       </div>
     );
   }
 }
-export default SignIn;
+export default SignUp;

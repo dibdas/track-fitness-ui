@@ -1,18 +1,30 @@
-import { BrowserRouter } from 'react-router-dom';
+/* eslint-disable no-unused-vars */
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useRouteMatch,
+  useParams,
+} from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Login from './components/Login';
-import SignIn from './components/SignIn';
+import SignUp from './components/SignUp';
 
 function App() {
   return (
     <>
-      <BrowserRouter>
+      <Router>
         <Home />
-        <Login />
-        <SignIn />
+        <Route path="/login">
+          <Login />
+        </Route>
+        <Route path="/signup">
+          <SignUp />
+        </Route>
         <Navbar />
-      </BrowserRouter>
+      </Router>
     </>
   );
 }

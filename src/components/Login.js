@@ -1,7 +1,7 @@
-/* eslint-disable no-undef */
 /* eslint-disable react/no-unused-state */
 /* eslint-disable no-restricted-globals */
 import { Component } from 'react';
+import axios from 'axios';
 
 class Login extends Component {
   constructor(props) {
@@ -21,25 +21,19 @@ class Login extends Component {
     });
   }
 
-  handleSubmit=async (event) => {
+  handleSubmit=(event) => {
     const { username, passwd } = this.state;
-    const user = JSON.stringify({
+    const user = {
       email: username,
       password: passwd,
-    });
-    console.log('http://localhost:3000/login');
-    fetch('http://localhost:3000/login', {
-      mode: 'no-cors',
-      method: 'POST',
-      header: {
-        Accept: 'application/json',
-        'Content-Type': 'application/json',
-      },
-      body: user,
+    };
+    axios({
+      method: 'post',
+      url: 'http://localhost:3000/login/',
+      data: user,
     })
       .then((response) => {
-        if (response.data === 'created') {
-          console.log(response.data);
+        if (response.data.loggedin === 'created') {
           this.handleSuccessfulAuth(response.data);
         }
       })
@@ -47,7 +41,6 @@ class Login extends Component {
         console.log('login', error);
       });
     event.preventDefault();
-    console.log(user);
   }
 
   render() {
@@ -57,7 +50,9 @@ class Login extends Component {
         <h1>login</h1>
         <form onSubmit={this.handleSubmit}>
           <input placeholder="email" type="text" value={username} name="username" onChange={(e) => this.handleChange(e)} />
+          <br />
           <input placeholder="password" type="password" value={passwd} name="passwd" onChange={(e) => this.handleChange(e)} />
+          <br />
           <button type="submit"> submit</button>
         </form>
       </div>
