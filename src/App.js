@@ -17,13 +17,14 @@ function App() {
     <>
       <Router>
         <Home />
-        <Route path="/login">
-          <Login />
-          <ExeciseForm />
-        </Route>
-        <Route path="/signup">
-          <SignUp />
-        </Route>
+        <Switch>
+          <Route path="/login" exact component={Login} />
+          <Route path="/login/exercise" exact component={ExeciseForm} />
+        </Switch>
+        <Switch>
+          <Route path="/signup" exact component={SignUp} />
+          <Route path="/signup/exercise" exact component={ExeciseForm} />
+        </Switch>
       </Router>
     </>
   );

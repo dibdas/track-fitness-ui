@@ -1,7 +1,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 
-const ExeciseForm = (name, measureChange) => (
+const ExeciseForm = ({ name, measureChange }) => (
   <li>
     <div>
       <h4>{name}</h4>

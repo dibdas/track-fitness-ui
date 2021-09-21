@@ -37,6 +37,16 @@ class Login extends Component {
           this.handleSuccessfulAuth(response.data);
         }
       })
+      .then((data) => {
+        fetch('users', {
+          method: 'GET',
+          headers: {
+            Accept: 'application / json',
+            Authorization: localStorage.getItem(`${data.access_token}`),
+          },
+        });
+      })
+
       .catch((error) => {
         console.log('login', error);
       });
