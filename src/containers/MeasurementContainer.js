@@ -16,12 +16,27 @@ const Measurement=({exercises})=>{
 
   const handleDate=(e)=>{
     setCreatedAt(e.target.value)
-    
-    };
-
-  const handleDate = e => {
-    setCreatedAt(e.target.value);
   };
+  const setMeasurement = (e) =>{
+    const {name,value} = e.target
+    switch (name) {
+      case 'leftbicep':
+        return setLeftBicep(value);
+      case 'rightbicep' :
+        return setRightBicep(value);
+      case 'hip':
+          return setHip(value);
+      case 'leftthigh' :
+        return setLeftThigh(value);
+      case 'rightthigh' :
+        return setRightThigh(value);
+      case 'waist':
+        return setWaist(value);
+
+
+    }
+  }
+
 
 
 const mapStateToProps = (state) => {
