@@ -1,21 +1,23 @@
-/* eslint-disable react/destructuring-assignment */
+import React from 'react';
+import { PropTypes } from 'prop-types';
 
-import PropTypes from 'prop-types';
-
-
-
-const ExeciseForm = (measurements, exercise, measureChange) => (
-  <div>
-    <h4>{exercise.name}</h4>
-    <input onChange={measureChange} value={measurements[exercise.id]} placeholder="30" type="number" />
-  </div>
+const ExeciseForm = (name, measureChange) => (
+  <li>
+    <div>
+      <h4>{name}</h4>
+      <input
+        type="number"
+        placeholder="enter a value"
+        onChange={(e) => { measureChange(e); }}
+        name={name}
+      />
+    </div>
+  </li>
 
 );
 ExeciseForm.propTypes = {
-  measureChange = PropTypes.func.isRequired,
-  exercise= PropTypes.objectOf(PropTypes.any).isRequired,
-  measurements=PropTypes.objectOf(PropTypes.array).isRequired,
-
+  name: PropTypes.string.isRequired,
+  measureChange: PropTypes.func.isRequired,
 
 };
 export default ExeciseForm;
