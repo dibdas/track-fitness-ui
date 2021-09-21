@@ -7,10 +7,10 @@ import {
   useRouteMatch,
   useParams,
 } from 'react-router-dom';
-import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
+import ExeciseForm from './components/ExerciseForm';
 
 function App() {
   return (
@@ -19,11 +19,11 @@ function App() {
         <Home />
         <Route path="/login">
           <Login />
+          <ExeciseForm />
         </Route>
         <Route path="/signup">
           <SignUp />
         </Route>
-        <Navbar />
       </Router>
     </>
   );

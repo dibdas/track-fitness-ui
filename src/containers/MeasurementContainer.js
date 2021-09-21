@@ -34,6 +34,13 @@ const Measurement=({exercises})=>{
         return 0;
     }
   }
+  const setPercentage = (e) =>{
+    const {value} = e.target
+        sum = setLeftBicep(value)+setRightBicep(value)+ setHip(value)+
+        setLeftThigh(value)+ setRightThigh(value)+setWaist(value);
+        const percentage=((sum*100)/300)
+      
+  }
 
   const handleDate=(e)=>{
     setCreatedAt(e.target.value)
@@ -55,7 +62,7 @@ const Measurement=({exercises})=>{
         < ExeciseForm name={exercise.name} handleMeasurement ={(e)=>{setMeasurement(e)}}/>
         )}
       </ul>
-      <button type="button"></button>
+      <button type="button" onClick={()=>setPercentage}></button>
 
     </div>
   )
