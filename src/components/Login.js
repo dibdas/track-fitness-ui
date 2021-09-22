@@ -1,5 +1,3 @@
-/* eslint-disable react/no-unused-state */
-/* eslint-disable no-restricted-globals */
 import { Component } from 'react';
 import axios from 'axios';
 
@@ -33,20 +31,8 @@ class Login extends Component {
       data: user,
     })
       .then((response) => {
-        if (response.data.loggedin === 'created') {
-          this.handleSuccessfulAuth(response.data);
-        }
+        localStorage.setItem('token', response.data.auth_token);
       })
-      .then((data) => {
-        fetch('users', {
-          method: 'GET',
-          headers: {
-            Accept: 'application / json',
-            Authorization: localStorage.getItem(`${data.access_token}`),
-          },
-        });
-      })
-
       .catch((error) => {
         console.log('login', error);
       });

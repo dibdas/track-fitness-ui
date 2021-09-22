@@ -1,4 +1,6 @@
+/* eslint-disable react/jsx-no-comment-textnodes */
 /* eslint-disable no-unused-vars */
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -19,6 +21,7 @@ function App() {
         <Home />
         <Switch>
           <Route path="/login" exact component={Login} />
+
           <Route path="/login/exercise" exact component={ExeciseForm} />
         </Switch>
         <Switch>

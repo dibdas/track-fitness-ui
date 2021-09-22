@@ -6,6 +6,7 @@ import { useHistory } from 'react-router';
 import Measurement from '../components/Measurement';
 import { useState } from 'react';
 import ExeciseForm from '../components/ExerciseForm';
+import checkTokens from '../containers/Tokenchecker';
 const Measurement=({exercises})=>{
   const [leftbicep,setLeftBicep]=useState(0);
   const [rightbicep,setRightBicep]=useState(0);
