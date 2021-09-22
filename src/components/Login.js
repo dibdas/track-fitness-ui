@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import axios from 'axios';
+import { Redirect } from 'react-router';
 
 class Login extends Component {
   constructor(props) {
@@ -7,6 +8,7 @@ class Login extends Component {
     this.state = {
       username: '',
       passwd: '',
+      token: null,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -21,6 +23,7 @@ class Login extends Component {
 
   handleSubmit=(event) => {
     const { username, passwd } = this.state;
+
     const user = {
       email: username,
       password: passwd,
@@ -32,6 +35,9 @@ class Login extends Component {
     })
       .then((response) => {
         localStorage.setItem('token', response.data.auth_token);
+        this.setState({
+          token: response.data.auth_token,
+        });
       })
       .catch((error) => {
         console.log('login', error);
@@ -40,7 +46,10 @@ class Login extends Component {
   }
 
   render() {
-    const { username, passwd } = this.state;
+    const { username, passwd, token } = this.state;
+    if (token !== null) {
+      return <Redirect to="/exercise" />;
+    }
     return (
       <div>
         <h1>login</h1>
@@ -55,4 +64,5 @@ class Login extends Component {
     );
   }
 }
+
 export default Login;
