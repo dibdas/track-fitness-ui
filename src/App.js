@@ -13,7 +13,7 @@ import {
 import Home from './components/Home';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
-import ExerciseForm from './components/ExerciseForm';
+import Measurements from './containers/MeasurementContainer';
 
 function App() {
   return (
@@ -22,7 +22,9 @@ function App() {
         <Home />
         <Switch>
           <Route path="/login" exact component={Login} />
-          <Route path="/exercise" exact component={ExerciseForm} />
+          <Route path="/exercise" exact>
+            <Measurements exercises={['leftBiceps', 'rightBiceps', 'Hip', 'waist', 'leftThigh', 'rightThigh']} />
+          </Route>
           <Route path="/signup" exact component={SignUp} />
         </Switch>
       </Router>

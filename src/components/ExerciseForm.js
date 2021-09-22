@@ -7,15 +7,17 @@ const ExeciseForm = ({ name, setMeasurement }) => {
   if (currentToken() === null) {
     return <Redirect to="/login" />;
   }
-
   return (
     <li>
-      <div className="text-center">
+      <div className="text-center list-style-none">
         <h4>{name}</h4>
         <input
           type="number"
           placeholder="enter a value"
-          onChange={(e) => { setMeasurement(e); }}
+          onChange={(e) => {
+            console.log(setMeasurement);
+            setMeasurement(e);
+          }}
           name={name}
         />
       </div>
@@ -26,6 +28,5 @@ const ExeciseForm = ({ name, setMeasurement }) => {
 ExeciseForm.propTypes = {
   name: PropTypes.string.isRequired,
   setMeasurement: PropTypes.func.isRequired,
-
 };
 export default ExeciseForm;
