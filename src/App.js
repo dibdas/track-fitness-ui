@@ -5,6 +5,7 @@ import {
   BrowserRouter as Router,
   Switch,
   Route,
+  Redirect,
   Link,
   useRouteMatch,
   useParams,
@@ -12,7 +13,7 @@ import {
 import Home from './components/Home';
 import Login from './components/Login';
 import SignUp from './components/SignUp';
-import ExeciseForm from './components/ExerciseForm';
+import ExerciseForm from './components/ExerciseForm';
 
 function App() {
   return (
@@ -21,12 +22,8 @@ function App() {
         <Home />
         <Switch>
           <Route path="/login" exact component={Login} />
-
-          <Route path="/login/exercise" exact component={ExeciseForm} />
-        </Switch>
-        <Switch>
+          <Route path="/exercise" exact component={ExerciseForm} />
           <Route path="/signup" exact component={SignUp} />
-          <Route path="/signup/exercise" exact component={ExeciseForm} />
         </Switch>
       </Router>
     </>

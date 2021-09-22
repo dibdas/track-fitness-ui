@@ -60,7 +60,7 @@ const Measurement=({exercises})=>{
       </div>
       <ul>
         {exercises.map(exercise =>
-        < ExeciseForm name={exercise.name} handleMeasurement ={(e)=>{setMeasurement(e)}}/>
+        < ExeciseForm name={exercise.name} setMeasurement={(e) => { setMeasurement(e) }} />
         )}
       </ul>
       <button type="button" onClick={()=>setPercentage}></button>

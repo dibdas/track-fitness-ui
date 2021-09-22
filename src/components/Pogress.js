@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { connect } from 'react-redux';
