@@ -1,10 +1,10 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react/prop-types */
 import React from 'react';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
-import { connect } from 'react-redux';
-import { PropTypes } from 'prop-types';
 
-const Pogress = ({ measurements, exercises }) => (
+const Pogress = ({ measurements }) => (
   <div>
     {measurements.map((measurement) => (
       <div key={measurement.id}>

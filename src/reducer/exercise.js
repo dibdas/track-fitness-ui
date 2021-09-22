@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 /* eslint-disable import/named */
 /* eslint-disable default-case */
 import {

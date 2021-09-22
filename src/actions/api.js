@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 // eslint-disable-next-line no-unused-vars
 const exercise = async (id) => {
   const url = 'http://localhost:3000/exercise/id';
@@ -22,7 +23,7 @@ const measurement = async (id) => {
   throw Error(404);
 };
 
-const postmeasurement = async (id) => {
+const postmeasurement = async (_id) => {
   try {
     const response = await fetch('http://localhost:3000/measurements/id', {
       method: 'POST',
