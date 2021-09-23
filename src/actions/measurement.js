@@ -1,3 +1,4 @@
+/* eslint-disable consistent-return */
 export const SUCCESS_MEASUREMENT = 'SUCCESS_MEASUREMENT';
 export const ERROR_MEASUREMENT = 'ERROR_MEASUREMENT';
 export const FETCH_MEASUREMENT = 'FETCH_MEASUREMENT';
@@ -36,5 +37,3 @@ export const addMeasurementsAsync = () => {
     },
   });
 };
-
-export const fetchingCategories = () => ({ type: FETCHING_CATEGORIES });
