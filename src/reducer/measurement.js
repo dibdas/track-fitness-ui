@@ -3,10 +3,10 @@
 /* eslint-disable import/named */
 /* eslint-disable default-case */
 // eslint-disable-next-line no-unused-vars
-import { measurement } from '../actions/api';
+
 import {
-  SUCCESS_MEASUREMENT, ERROR_MEASUREMENT, SUCCESS,
-} from '../actions/constant';
+  ERROR_MEASUREMENT, FETCH_MEASUREMENT, ADD_MEASUREMENT_ERROR, SUCCESS_MEASUREMENT,
+} from '../actions/measurement';
 
 const defaultState = { measurement: {}, status: Measurement, error: null };
 const measurementReducer = (state = defaultState, action) => {
@@ -21,9 +21,20 @@ const measurementReducer = (state = defaultState, action) => {
     case ERROR_MEASUREMENT:
       return {
         ...state,
+        error,
+      };
+    case FETCH_MEASUREMENT:
+      return {
+        ...state,
+        state: action.data,
         status: SUCCESS,
-        exercise: action.data,
         error: null,
+
+      };
+    case ADD_MEASUREMENT_ERROR:
+      return {
+        ...state,
+        error,
       };
   }
 };
