@@ -3,8 +3,14 @@
 import React from 'react';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
+import currentToken from '../containers/Tokenchecker';
 
-const Pogress = ({ measurements }) => (
+const Pogress = ({ measurements }) => {
+  
+  if (currentToken() === null) {
+    return <Redirect to="/login" />;
+  }
+  return (
   <div>
     {measurements.map((measurement) => (
       <div key={measurement.id}>
@@ -16,5 +22,16 @@ const Pogress = ({ measurements }) => (
     ))}
 
   </div>
-);
-export default Pogress;
+  );
+}
+
+ExeciseForm.propTypes = {
+  measurements: PropTypes.func.isRequired,
+};
+const mapStateToProps = state =>{
+  {
+    measurements: state .measurements
+  }
+}
+
+export default connect(mapStateToProps,null)Pogress;

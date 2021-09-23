@@ -61,7 +61,7 @@ const MeasurementContainer = ({ exercises }) => {
           />
         ))}
       </ul>
-      <button type="button" onClick={() => setPercentage()}>Add</button>
+      <button type="button" className="btn btn-success" onClick={() => setPercentage()}>Add</button>
     </div>
   );
 };
@@ -69,5 +69,10 @@ const MeasurementContainer = ({ exercises }) => {
 MeasurementContainer.propTypes = {
   exercises: PropTypes.func.isRequired,
 };
+const mapDispatchToProps = (dispatch) => ({
+  setMeasurement: (leftBiceps, rightBiceps, Hip, waist, leftThigh, rightThigh) => (
+    dispatch(setMeasurementAsync(leftBiceps, rightBiceps, Hip, waist, leftThigh, rightThigh))
+  ),
+});
 
 export default MeasurementContainer;
