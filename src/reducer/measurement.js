@@ -8,7 +8,7 @@ import {
   ERROR_MEASUREMENT, FETCH_MEASUREMENT, ADD_MEASUREMENT_ERROR, SUCCESS_MEASUREMENT,
 } from '../actions/measurement';
 
-const defaultState = { measurement: {}, status: Measurement, error: null };
+const defaultState = { measurement: {}, status: null, error: null };
 const measurementReducer = (state = defaultState, action) => {
   switch (action.type) {
     case SUCCESS_MEASUREMENT:
@@ -29,13 +29,14 @@ const measurementReducer = (state = defaultState, action) => {
         state: action.data,
         status: SUCCESS,
         error: null,
-
       };
     case ADD_MEASUREMENT_ERROR:
       return {
         ...state,
         error,
       };
+    default:
+      return state;
   }
 };
 export default measurementReducer;
