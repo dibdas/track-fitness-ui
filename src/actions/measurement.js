@@ -1,12 +1,9 @@
 /* eslint-disable consistent-return */
-export const FETCH_MEASUREMENTS_ERROR = 'FETCH_MEASUREMENTS_ERROR';
+export const SUCCESS_MEASUREMENT = 'SUCCESS_MEASUREMENT';
 export const ERROR_MEASUREMENT = 'ERROR_MEASUREMENT';
 export const FETCH_MEASUREMENT = 'FETCH_MEASUREMENT';
-export const ADD_MEASUREMENTS_ERROR = 'ADD_MEASUREMENTS_ERROR';
-export const ADD_MEASUREMENTS = 'ADD_MEASUREMENTS';
-export const FETCH_MEASUREMENTS_SUCCESS = 'FETCH_MEASUREMENTS_SUCCESS';
 export const ADD_MEASUREMENT_ERROR = 'ADD_MEASUREMENT_ERROR';
-export const SUCCESS_MEASUREMENT = 'SUCCESS_MEASUREMENT';
+
 export const addMeasurementsError = () => ({ type: ADD_MEASUREMENT_ERROR });
 
 export const successMeasurements = (measurements) => ({
@@ -32,11 +29,19 @@ export const fetchMeasurementsAsync = () => async (dispatch) => {
       .then((data) => dispatch(successMeasurements(data)))
       .catch(() => dispatch(errorMeasurements())));
 };
-export const addMeasurementsAsync = () => {
-  fetch('/measurement', {
+
+export const addMeasurementsAsync = (params) => async (dispatch) => (
+  fetch('http://localhost:3000/measurements', {
     method: 'POST',
+    body: JSON.stringify({ measurements: { measure: params } }),
     headers: {
-      Accept: 'application/json',
+      'Content-type': 'application/json;charset=UTF-8',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
-  });
-};
+  })
+    .then((result) => {
+      console.log(result.json());
+      return result.json();
+    })
+    .then((data) => dispatch({ type: SUCCESS_MEASUREMENT, data }))
+);
