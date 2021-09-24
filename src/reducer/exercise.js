@@ -1,15 +1,15 @@
-import { FETCHING_EXERCISES, ERROR_EXERCISE, SUCCESS_EXERCISE } from '../actions/exercise';
+import { FETCHING_EXERCISES, FETCHING_EXERCISE_ERROR, FETCHING_EXERCISE_SUCCESS } from '../actions/exercise';
 
 const defaultState = { exercise: {}, error: null };
 const exerciseReducer = (state = defaultState, action) => {
   switch (action.type) {
-    case SUCCESS_EXERCISE:
+    case FETCHING_EXERCISE_SUCCESS:
       return {
         ...state,
         exercise: action.data,
         error: null,
       };
-    case ERROR_EXERCISE:
+    case FETCHING_EXERCISE_ERROR:
       return {
         ...state,
         error: null,

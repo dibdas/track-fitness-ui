@@ -1,5 +1,5 @@
 export const FETCHING_EXERCISES = 'FETCHING_EXERCISES';
-export const FETCHING_EXERCISE_ERROR_ = 'FETCHING_EXERCISE_ERROR';
+export const FETCHING_EXERCISE_ERROR = 'FETCHING_EXERCISE_ERROR';
 export const FETCHING_EXERCISE_SUCCESS = 'FETCHING_EXERCISE_SUCCESS';
 
 export const fetchingExercises = () => ({ type: FETCHING_EXERCISES });
@@ -10,7 +10,7 @@ const fetchExerciseSuccess = (exercises) => ({
 });
 
 export const fetchExerciseError = () => ({
-  type: 'FETCHING_EXERCISE_ERROR',
+  type: FETCHING_EXERCISE_ERROR,
 
 });
 
