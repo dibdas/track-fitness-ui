@@ -7,6 +7,7 @@ import React from 'react';
 import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { Redirect } from 'react-router-dom';
+import { PropTypes } from 'prop-types';
 import currentToken from '../containers/Tokenchecker';
 
 const Pogress = ({ measurements }) => {
@@ -28,7 +29,7 @@ const Pogress = ({ measurements }) => {
   );
 };
 
-ExeciseForm.propTypes = {
+Pogress.propTypes = {
   measurements: PropTypes.func.isRequired,
 };
 const mapStateToProps = (state) => {

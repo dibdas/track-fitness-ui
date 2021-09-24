@@ -4,7 +4,9 @@
 /* eslint-disable import/no-named-as-default-member */
 import { PropTypes } from 'prop-types';
 import { useState } from 'react';
+import { connect } from 'react-redux';
 import ExeciseForm from '../components/ExerciseForm';
+import { addMeasurementsAsync } from '../actions/measurement';
 
 const MeasurementContainer = ({ exercises }) => {
   const [leftbicep, setLeftBicep] = useState(0);
@@ -71,10 +73,14 @@ const MeasurementContainer = ({ exercises }) => {
 MeasurementContainer.propTypes = {
   exercises: PropTypes.func.isRequired,
 };
+
+const mapStateToProps = (state) => ({
+  measurements: state.measurements,
+});
 const mapDispatchToProps = (dispatch) => ({
-  setMeasurement: (leftBiceps, rightBiceps, Hip, waist, leftThigh, rightThigh) => (
-    dispatch(setMeasurementAsync(leftBiceps, rightBiceps, Hip, waist, leftThigh, rightThigh))
+  setPercentage: (measure) => (
+    dispatch(addMeasurementsAsync(measure))
   ),
 });
 
-export default MeasurementContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(MeasurementContainer);
