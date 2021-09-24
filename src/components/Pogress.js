@@ -8,6 +8,7 @@ import { CircularProgressbar } from 'react-circular-progressbar';
 import 'react-circular-progressbar/dist/styles.css';
 import { Redirect } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
+import { connect } from 'react-redux';
 import currentToken from '../containers/Tokenchecker';
 
 const Pogress = ({ measurements }) => {
@@ -32,8 +33,11 @@ const Pogress = ({ measurements }) => {
 Pogress.propTypes = {
   measurements: PropTypes.func.isRequired,
 };
-const mapStateToProps = (state) => {
-  state.measurements;
-};
 
-export default Pogress;
+const mapStateToProps = (state) => (
+  {
+    measurements: state.measurements,
+  }
+);
+
+export default connect(mapStateToProps, null)(Pogress);
