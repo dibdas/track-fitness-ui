@@ -6,7 +6,7 @@ export const ADD_MEASUREMENTS_ERROR = 'ADD_MEASUREMENTS_ERROR';
 export const ADD_MEASUREMENTS = 'ADD_MEASUREMENTS';
 export const FETCH_MEASUREMENTS_SUCCESS = 'FETCH_MEASUREMENTS_SUCCESS';
 export const ADD_MEASUREMENT_ERROR = 'ADD_MEASUREMENT_ERROR';
-
+export const SUCCESS_MEASUREMENT = 'SUCCESS_MEASUREMENT';
 export const addMeasurementsError = () => ({ type: ADD_MEASUREMENT_ERROR });
 
 export const successMeasurements = (measurements) => ({
