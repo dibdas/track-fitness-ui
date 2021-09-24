@@ -1,17 +1,17 @@
 export const FETCHING_EXERCISES = 'FETCHING_EXERCISES';
-export const ERROR_EXERCISE = 'ERROR_EXERCISE';
-export const SUCCESS_EXERCISE = 'SUCCESS_EXERCISE';
+export const FETCHING_EXERCISE_ERROR_ = 'FETCHING_EXERCISE_ERROR';
+export const FETCHING_EXERCISE_SUCCESS = 'FETCHING_EXERCISE_SUCCESS';
 
 export const fetchingExercises = () => ({ type: FETCHING_EXERCISES });
 
-const successexercise = (data) => ({
-  type: 'SUCCESS_EXERCISE',
-  data,
+const fetchExerciseSuccess = (exercises) => ({
+  type: FETCHING_EXERCISE_SUCCESS,
+  exercises,
 });
 
-export const errorexercise = (error) => ({
-  type: 'ERROR_EXERCISE',
-  error,
+export const fetchExerciseError = () => ({
+  type: 'FETCHING_EXERCISE_ERROR',
+
 });
 
 export const fetchExerciseAsync = () => (
@@ -24,7 +24,7 @@ export const fetchExerciseAsync = () => (
       },
     })
       .then((result) => result.json)
-      .then((exercises) => dispatch(successexercise(exercises)))
-      .catch(() => dispatch(errorexercise()));
+      .then((exercises) => dispatch(fetchExerciseSuccess(exercises)))
+      .catch(() => dispatch(fetchExerciseError()));
   }
 );
