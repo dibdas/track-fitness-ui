@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import ExeciseForm from '../components/ExerciseForm';
 import { addMeasurementsAsync } from '../actions/measurement';
 
-const MeasurementContainer = ({ exercises }) => {
+const MeasurementContainer = ({ exercises, setMeasurement }) => {
   const [leftbicep, setLeftBicep] = useState(0);
   const [rightbicep, setRightBicep] = useState(0);
   const [waist, setWaist] = useState(0);
@@ -35,7 +35,18 @@ const MeasurementContainer = ({ exercises }) => {
         return 0;
     }
   };
-  const setPercentage = () => {
+
+  const handleSubmit = () => {
+    const measurements = {
+      leftbicep,
+      rightbicep,
+      hip,
+      leftthigh,
+      rightthigh,
+      waist,
+    };
+
+    setMeasurement(measurements);
     const sum = leftbicep + rightbicep + hip + leftthigh + rightthigh + waist;
     const percentage = ((sum * 100) / 300);
     return percentage;
@@ -65,20 +76,21 @@ const MeasurementContainer = ({ exercises }) => {
           />
         ))}
       </ul>
-      <button type="button" className="btn btn-success" onClick={() => setPercentage()}>Add</button>
+      <button type="button" className="btn btn-success" onClick={() => handleSubmit()}>Add</button>
     </div>
   );
 };
 
 MeasurementContainer.propTypes = {
   exercises: PropTypes.func.isRequired,
+  setMeasurement: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
   measurements: state.measurements,
 });
 const mapDispatchToProps = (dispatch) => ({
-  setPercentage: (measure) => (
+  setMeasurement: (measure) => (
     dispatch(addMeasurementsAsync(measure))
   ),
 });
