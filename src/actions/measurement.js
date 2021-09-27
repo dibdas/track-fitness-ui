@@ -19,6 +19,7 @@ export const fetchMeasurementsAsync = () => async (dispatch) => {
     method: 'GET',
     headers: {
       Accept: 'application/json',
+      Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
   })
     .then(((result) => {

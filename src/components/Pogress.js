@@ -16,9 +16,12 @@ const Pogress = ({ fetchMeasurements }) => {
   if (currentToken() === null) {
     return <Redirect to="/login" />;
   }
+  console.log(fetchMeasurements);
   return (
     <div>
+
       {fetchMeasurements.map((measurement) => (
+
         <div key={measurement.id}>
           <div className="p-2">
             {(measurement.created_at)}

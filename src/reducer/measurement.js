@@ -8,7 +8,24 @@ import {
   ERROR_MEASUREMENT, FETCH_MEASUREMENT, ADD_MEASUREMENT_ERROR, SUCCESS_MEASUREMENT,
 } from '../actions/measurement';
 
-const defaultState = { measurement: {}, status: null, error: null };
+const defaultState = {
+  measurement: [{
+    Measurement_id: '1',
+    measure: '1.0',
+    user_id: '6',
+    created_at: '2021-09-27 18:25:13.421718000 +0000',
+    updated_at: '2021-09-27 18:25:13.421718000 +0000',
+    exercise_id: '1',
+  },
+  {
+    Measurement_id: '2', measure: '3.0', user_id: 6, created_at: '2021-09-27 18:25:13.451409000 +0000', updated_at: '2021-09-27 18:25:13.451409000 +0000', exercise_id: '2',
+  },
+  {
+    Measurement_id: '3', measure: '3.0', user_id: 6, created_at: '2021-09-27 18:25:13.466747000 +0000', updated_at: '2021-09-27 18:25:13.466747000 +0000', exercise_id: 3,
+  },
+  ],
+};
+
 const measurementReducer = (state = defaultState, action) => {
   switch (action.type) {
     case SUCCESS_MEASUREMENT:
