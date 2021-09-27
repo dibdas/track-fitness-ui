@@ -31,6 +31,7 @@ class Login extends Component {
     axios({
       method: 'post',
       url: 'http://localhost:3000/login/',
+      mode: 'no-cors',
       data: user,
     })
       .then((response) => {

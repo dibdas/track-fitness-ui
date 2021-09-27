@@ -10,14 +10,15 @@ import { Redirect } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
 import currentToken from '../containers/Tokenchecker';
+import { fetchMeasurementsAsync } from '../actions/measurement';
 
-const Pogress = ({ measurements }) => {
+const Pogress = ({ fetchMeasurements }) => {
   if (currentToken() === null) {
     return <Redirect to="/login" />;
   }
   return (
     <div>
-      {measurements.map((measurement) => (
+      {fetchMeasurements.map((measurement) => (
         <div key={measurement.id}>
           <div className="p-2">
             {(measurement.created_at)}
@@ -31,13 +32,17 @@ const Pogress = ({ measurements }) => {
 };
 
 Pogress.propTypes = {
-  measurements: PropTypes.func.isRequired,
+  fetchMeasurements: PropTypes.func.isRequired,
 };
 
-const mapStateToProps = (state) => (
-  {
-    measurements: state.measurements,
-  }
-);
+const mapStateToProps = (state) => ({
+  measurements: state.measurements,
+});
 
-export default connect(mapStateToProps, null)(Pogress);
+const mapDispatchToProps = (dispatch) => ({
+  fetchMeasurement: (measure) => (
+    dispatch(fetchMeasurementsAsync(measure))
+  ),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Pogress);
