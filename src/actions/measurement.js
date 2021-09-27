@@ -33,15 +33,12 @@ export const fetchMeasurementsAsync = () => async (dispatch) => {
 export const addMeasurementsAsync = (params) => async (dispatch) => (
   fetch('http://localhost:3000/measurements', {
     method: 'POST',
-    body: JSON.stringify({ measurements: { measure: params } }),
+    body: JSON.stringify({ measurements: params }),
     headers: {
       'Content-type': 'application/json;charset=UTF-8',
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
   })
-    .then((result) => {
-      console.log(result.json());
-      return result.json();
-    })
+    .then((result) => result.json())
     .then((data) => dispatch({ type: SUCCESS_MEASUREMENT, data }))
 );
