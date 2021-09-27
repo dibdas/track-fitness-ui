@@ -18,16 +18,17 @@ const MeasurementContainer = ({ exercises, setMeasurement }) => {
   const [createdAt, setCreatedAt] = useState(0);
   const handleMeasurement = (e) => {
     const { name, value } = e.target;
+    console.log(name, value);
     switch (name) {
-      case 'leftbicep':
+      case 'leftBiceps':
         return setLeftBicep(value);
-      case 'rightbicep':
+      case 'rightBiceps':
         return setRightBicep(value);
-      case 'hip':
+      case 'Hip':
         return setHip(value);
-      case 'leftthigh':
+      case 'leftThigh':
         return setLeftThigh(value);
-      case 'rightthigh':
+      case 'rightThigh':
         return setRightThigh(value);
       case 'waist':
         return setWaist(value);
@@ -38,6 +39,7 @@ const MeasurementContainer = ({ exercises, setMeasurement }) => {
 
   const handleSubmit = () => {
     const measurements = {
+      createdAt,
       leftbicep,
       rightbicep,
       hip,
