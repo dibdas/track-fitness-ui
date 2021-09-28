@@ -15,20 +15,24 @@ export const errorMeasurements = () => ({
 });
 
 export const fetchMeasurementsAsync = () => async (dispatch) => {
-  fetch('/measurement', {
+  fetch('http://localhost:3000/measurements', {
     method: 'GET',
     headers: {
       Accept: 'application/json',
       Authorization: `Bearer ${localStorage.getItem('token')}`,
     },
   })
-    .then(((result) => {
+    .then((result) => {
       if (result.status !== 200) {
         return dispatch(errorMeasurements());
       }
+      return result.json();
     })
-      .then((data) => dispatch(successMeasurements(data)))
-      .catch(() => dispatch(errorMeasurements())));
+    .then((data) => {
+      console.log(data);
+      dispatch(successMeasurements(data));
+    })
+    .catch(() => dispatch(errorMeasurements()));
 };
 
 export const addMeasurementsAsync = (params) => async (dispatch) => (
