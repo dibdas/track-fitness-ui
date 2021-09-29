@@ -33,7 +33,7 @@ class Login extends Component {
     };
     axios({
       method: 'post',
-      url: `${config_url}/login`,
+      url: `${config_url()}/login`,
       mode: 'no-cors',
       data: user,
     })

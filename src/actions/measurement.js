@@ -18,7 +18,7 @@ export const errorMeasurements = () => ({
 });
 
 export const fetchMeasurementsAsync = () => async (dispatch) => {
-  fetch(`${config_url}/measurements/`, {
+  fetch(`${config_url()}/measurements/`, {
     method: 'GET',
     headers: {
       Accept: 'application/json',
@@ -39,7 +39,7 @@ export const fetchMeasurementsAsync = () => async (dispatch) => {
 };
 
 export const addMeasurementsAsync = (params) => async (dispatch) => (
-  fetch(`${config_url}/measurements/`, {
+  fetch(`${config_url()}/measurements/`, {
     method: 'POST',
     body: JSON.stringify({ measurements: params }),
     headers: {

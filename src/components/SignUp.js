@@ -35,7 +35,7 @@ class SignUp extends Component {
     };
     axios({
       method: 'post',
-      url: `${config_url}/signup/`,
+      url: `${config_url()}/signup/`,
       mode: 'no-cors',
       data: user,
     })
@@ -56,7 +56,7 @@ class SignUp extends Component {
       name, email, password_digest, token,
     } = this.state;
     if (token !== null) {
-      return <Redirect to="/login" />;
+      return <Redirect to="/" />;
     }
     return (
       <div>
