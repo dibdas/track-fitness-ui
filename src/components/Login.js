@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable camelcase */
 import { Component } from 'react';
 import axios from 'axios';

@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable react/no-unused-state */
 /* eslint-disable camelcase */
 /* eslint-disable no-undef */
