@@ -1,3 +1,4 @@
+/* eslint-disable no-console */
 /* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
 import { CircularProgressbar } from 'react-circular-progressbar';
