@@ -1,6 +1,9 @@
+/* eslint-disable camelcase */
 import { Component } from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router';
+import { Link } from 'react-router-dom';
+import config_url from '../actions/prod';
 
 class Login extends Component {
   constructor(props) {
@@ -30,7 +33,7 @@ class Login extends Component {
     };
     axios({
       method: 'post',
-      url: 'http://localhost:3000/login/',
+      url: `${config_url}/login`,
       mode: 'no-cors',
       data: user,
     })
@@ -61,6 +64,14 @@ class Login extends Component {
           <br />
           <button type="submit"> submit</button>
         </form>
+        <p>
+          <Link
+            to="/signup"
+            name="signup"
+          >
+            Sign-up
+          </Link>
+        </p>
       </div>
     );
   }

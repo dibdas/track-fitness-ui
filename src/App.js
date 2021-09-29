@@ -22,7 +22,7 @@ function App() {
       <Router>
         <Home />
         <Switch>
-          <Route path="/login" exact component={Login} />
+          <Route path="/" exact component={Login} />
           <Route path="/exercise" exact>
             <Measurements exercises={['leftBiceps', 'rightBiceps', 'Hip', 'waist', 'leftThigh', 'rightThigh']} />
           </Route>

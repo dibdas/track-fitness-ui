@@ -1,14 +1,14 @@
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-vars */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable import/no-named-as-default-member */
 import { PropTypes } from 'prop-types';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import ExeciseForm from '../components/ExerciseForm';
-import { addMeasurementsAsync } from '../actions/measurement';
+import { addMeasurementsAsync, fetchMeasurementsAsync } from '../actions/measurement';
 
-const MeasurementContainer = ({ exercises, setMeasurement }) => {
+const MeasurementContainer = ({ exercises, setMeasurement, fetchMeasurements }) => {
+  useEffect(() => {
+    fetchMeasurements();
+  }, []);
   const [leftbicep, setLeftBicep] = useState(0);
   const [rightbicep, setRightBicep] = useState(0);
   const [waist, setWaist] = useState(0);
@@ -16,6 +16,7 @@ const MeasurementContainer = ({ exercises, setMeasurement }) => {
   const [leftthigh, setLeftThigh] = useState(0);
   const [rightthigh, setRightThigh] = useState(0);
   const [createdAt, setCreatedAt] = useState(0);
+  const history = useHistory();
   const handleMeasurement = (e) => {
     const { name, value } = e.target;
     console.log(name, value);
@@ -78,7 +79,17 @@ const MeasurementContainer = ({ exercises, setMeasurement }) => {
           />
         ))}
       </ul>
-      <button type="button" className="btn btn-success" onClick={() => handleSubmit()}>Add</button>
+      <button
+        type="button"
+        className="btn btn-success"
+        onClick={() => {
+          handleSubmit();
+          fetchMeasurements();
+          history.push('/pogress');
+        }}
+      >
+        Add
+      </button>
     </div>
   );
 };
@@ -86,6 +97,7 @@ const MeasurementContainer = ({ exercises, setMeasurement }) => {
 MeasurementContainer.propTypes = {
   exercises: PropTypes.func.isRequired,
   setMeasurement: PropTypes.func.isRequired,
+  fetchMeasurements: PropTypes.func.isRequired,
 };
 
 const mapStateToProps = (state) => ({
@@ -94,6 +106,9 @@ const mapStateToProps = (state) => ({
 const mapDispatchToProps = (dispatch) => ({
   setMeasurement: (measure) => (
     dispatch(addMeasurementsAsync(measure))
+  ),
+  fetchMeasurements: () => (
+    dispatch(fetchMeasurementsAsync())
   ),
 });
 

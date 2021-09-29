@@ -1,4 +1,7 @@
+/* eslint-disable camelcase */
 /* eslint-disable consistent-return */
+import config_url from './prod';
+
 export const SUCCESS_MEASUREMENT = 'SUCCESS_MEASUREMENT';
 export const ERROR_MEASUREMENT = 'ERROR_MEASUREMENT';
 export const FETCH_MEASUREMENT = 'FETCH_MEASUREMENT';
@@ -15,7 +18,7 @@ export const errorMeasurements = () => ({
 });
 
 export const fetchMeasurementsAsync = () => async (dispatch) => {
-  fetch('http://localhost:3000/measurements', {
+  fetch(`${config_url}/measurements/`, {
     method: 'GET',
     headers: {
       Accept: 'application/json',
@@ -36,7 +39,7 @@ export const fetchMeasurementsAsync = () => async (dispatch) => {
 };
 
 export const addMeasurementsAsync = (params) => async (dispatch) => (
-  fetch('http://localhost:3000/measurements', {
+  fetch(`${config_url}/measurements/`, {
     method: 'POST',
     body: JSON.stringify({ measurements: params }),
     headers: {

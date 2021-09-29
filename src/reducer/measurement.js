@@ -31,14 +31,13 @@ const measurementReducer = (state = defaultState, action) => {
     case SUCCESS_MEASUREMENT:
       return {
         ...state,
-        state: action.data,
-        exercise: action.data,
+        measurements: action.measurements,
         error: null,
       };
     case ERROR_MEASUREMENT:
       return {
         ...state,
-        error,
+        error: action.error,
       };
     case FETCH_MEASUREMENT:
       return {

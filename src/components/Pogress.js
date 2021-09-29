@@ -1,7 +1,3 @@
-/* eslint-disable no-lone-blocks */
-/* eslint-disable no-undef */
-/* eslint-disable no-unused-expressions */
-/* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 import React, { useEffect } from 'react';
 import { CircularProgressbar } from 'react-circular-progressbar';
@@ -21,17 +17,23 @@ const Pogress = ({ measurements, fetchMeasurements }) => {
   }
   console.log(measurements);
   return (
-    <div>
-      {measurements !== undefined
-        ? measurements.map((measurement) => (
-          <div key={measurement.id}>
-            <div className="p-2">
-              {(measurement.created_at)}
-              <CircularProgressbar value={measurement.measure} />
+    <div className="col text-center mx-5 px-5 my-4 py-4 border border-1">
+      <div className="col-4 oval-2 text-center px-5">
+        {measurements !== undefined
+          ? measurements.map((measurement) => (
+            <div key={measurement.id}>
+              <div className="flex-col pt-4 align-items-center border border-1">
+                {(measurement.created_at)}
+              </div>
+              <div className="flex-col col-4 border border-1 text-center my-4 mx-4 px-4">
+                <CircularProgressbar value={measurement.measure} />
+              </div>
             </div>
-          </div>
-        )) : <p>No measurements</p>}
+          )) : <p> No measurements, if you dont find  kindly reload </p>}
+
+      </div>
     </div>
+
   );
 };
 

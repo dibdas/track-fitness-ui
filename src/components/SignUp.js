@@ -3,6 +3,8 @@
 /* eslint-disable no-undef */
 import { Component } from 'react';
 import axios from 'axios';
+import { Redirect } from 'react-router';
+import config_url from '../actions/prod';
 
 class SignUp extends Component {
   constructor(props) {
@@ -11,6 +13,7 @@ class SignUp extends Component {
       name: '',
       email: '',
       password_digest: '',
+      token: null,
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -32,22 +35,29 @@ class SignUp extends Component {
     };
     axios({
       method: 'post',
-      url: 'http://localhost:3000/signup/',
+      url: `${config_url}/signup/`,
+      mode: 'no-cors',
       data: user,
     })
       .then((response) => {
-        if (response.data.status === 'created') {
-          this.handleSuccessfulAuth(response.data);
-        }
+        localStorage.setItem('token', response.data.auth_token);
+        this.setState({
+          token: response.data.auth_token,
+        });
       })
       .catch((error) => {
-        console.log('signup error', error);
+        console.log('signup', error);
       });
     event.preventDefault();
   }
 
   render() {
-    const { name, email, password_digest } = this.state;
+    const {
+      name, email, password_digest, token,
+    } = this.state;
+    if (token !== null) {
+      return <Redirect to="/login" />;
+    }
     return (
       <div>
         <h1>Sign up</h1>
