@@ -36,7 +36,7 @@ class SignUp extends Component {
     };
     axios({
       method: 'post',
-      url: `${config_url()}/signup/`,
+      url: `${config_url()}/authentication/`,
       mode: 'no-cors',
       data: user,
     })
