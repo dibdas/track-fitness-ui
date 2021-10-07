@@ -2,7 +2,7 @@
 import React from 'react';
 import { PropTypes } from 'prop-types';
 import { Redirect } from 'react-router-dom';
-import currentToken from '../containers/Tokenchecker';
+import currentToken from '../api/Tokenchecker';
 
 const ExeciseForm = ({ name, setMeasurement }) => {
   if (currentToken() === null) {

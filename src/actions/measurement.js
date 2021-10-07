@@ -33,7 +33,6 @@ export const fetchMeasurementsAsync = () => async (dispatch) => {
       return result.json();
     })
     .then((data) => {
-      console.log(data);
       dispatch(successMeasurements(data));
     })
     .catch(() => dispatch(errorMeasurements()));

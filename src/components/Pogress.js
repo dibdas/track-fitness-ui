@@ -6,7 +6,7 @@ import 'react-circular-progressbar/dist/styles.css';
 import { Redirect } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { connect } from 'react-redux';
-import currentToken from '../containers/Tokenchecker';
+import currentToken from '../api/Tokenchecker';
 import { fetchMeasurementsAsync } from '../actions/measurement';
 
 const Pogress = ({ measurements, fetchMeasurements }) => {
