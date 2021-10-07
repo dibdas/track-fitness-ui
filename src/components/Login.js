@@ -4,7 +4,7 @@ import { Component } from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router';
 import { Link } from 'react-router-dom';
-import config_url from '../actions/prod';
+import config_url from '../api/prod';
 
 class Login extends Component {
   constructor(props) {

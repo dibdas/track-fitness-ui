@@ -1,7 +1,7 @@
 /* eslint-disable no-console */
 /* eslint-disable camelcase */
 /* eslint-disable consistent-return */
-import config_url from './prod';
+import config_url from '../api/prod';
 
 export const SUCCESS_MEASUREMENT = 'SUCCESS_MEASUREMENT';
 export const ERROR_MEASUREMENT = 'ERROR_MEASUREMENT';
@@ -18,7 +18,7 @@ export const errorMeasurements = () => ({
   type: ERROR_MEASUREMENT,
 });
 
-export const fetchMeasurementsAsync = () => async (dispatch) => {
+export const fetchMeasurementsAsync = () => (dispatch) => {
   fetch(`${config_url()}/measurements/`, {
     method: 'GET',
     headers: {
@@ -38,7 +38,7 @@ export const fetchMeasurementsAsync = () => async (dispatch) => {
     .catch(() => dispatch(errorMeasurements()));
 };
 
-export const addMeasurementsAsync = (params) => async (dispatch) => (
+export const addMeasurementsAsync = (params) => (dispatch) => (
   fetch(`${config_url()}/measurements/`, {
     method: 'POST',
     body: JSON.stringify({ measurements: params }),

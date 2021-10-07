@@ -18,12 +18,12 @@ const Pogress = ({ measurements, fetchMeasurements }) => {
   }
   console.log(measurements);
   return (
-    <div className="col text-center mx-5 px-5 my-4 py-4 border border-1">
+    <div className="col text-center mx-5 px-5 my-4 py-4 ">
       <div className="col-4 oval-2 text-center px-5">
         {measurements !== undefined
           ? measurements.map((measurement) => (
             <div key={measurement.id}>
-              <div className="flex-col pt-4 align-items-center border border-1">
+              <div className="flex-col pt-4 align-items-center ">
                 {(measurement.created_at)}
               </div>
               <div className="flex-col col-4 border border-1 text-center my-4 mx-4 px-4">

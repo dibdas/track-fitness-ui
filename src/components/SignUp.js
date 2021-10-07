@@ -5,7 +5,7 @@
 import { Component } from 'react';
 import axios from 'axios';
 import { Redirect } from 'react-router';
-import config_url from '../actions/prod';
+import config_url from '../api/prod';
 
 class SignUp extends Component {
   constructor(props) {

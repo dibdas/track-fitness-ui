@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 export const FETCHING_EXERCISES = 'FETCHING_EXERCISES';
 export const FETCHING_EXERCISE_ERROR = 'FETCHING_EXERCISE_ERROR';
 export const FETCHING_EXERCISE_SUCCESS = 'FETCHING_EXERCISE_SUCCESS';
@@ -17,14 +18,17 @@ export const fetchExerciseError = () => ({
 export const fetchExerciseAsync = () => (
   async (dispatch) => {
     dispatch(fetchingExercises());
-    return fetch('/exercise', {
-      method: 'GET',
-      headers: {
-        Accept: 'application/json',
-      },
-    })
-      .then((result) => result.json)
-      .then((exercises) => dispatch(fetchExerciseSuccess(exercises)))
-      .catch(() => dispatch(fetchExerciseError()));
+    try {
+      const result_1 = await fetch('/exercise', {
+        method: 'GET',
+        headers: {
+          Accept: 'application/json',
+        },
+      });
+      const exercises = result_1.json;
+      return dispatch(fetchExerciseSuccess(exercises));
+    } catch (e) {
+      return dispatch(fetchExerciseError());
+    }
   }
 );
