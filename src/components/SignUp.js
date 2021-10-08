@@ -60,14 +60,20 @@ class SignUp extends Component {
       return <Redirect to="/" />;
     }
     return (
-      <div>
+      <div className="text-center  rounded-circle mt-4 w-75 py-5 mx-auto bg-warning ">
         <h1>Sign up</h1>
         <form onSubmit={this.handleSubmit}>
-          <input placeholder="name" type="text" value={name} name="name" onChange={(e) => this.handleChange(e)} />
+          <div className="form-group">
+            <input className="rounded" placeholder="name" type="text" value={name} name="name" onChange={(e) => this.handleChange(e)} />
+          </div>
           <br />
-          <input placeholder="email" type="text" value={email} name="email" onChange={(e) => this.handleChange(e)} />
+          <div className="form-group">
+            <input className="rounded" placeholder="email" type="text" value={email} name="email" onChange={(e) => this.handleChange(e)} />
+          </div>
           <br />
-          <input placeholder="password_digest" type="password" name="password_digest" value={password_digest} onChange={this.handleChange} />
+          <div className="form-group">
+            <input className="rounded" placeholder="password_digest" type="password" name="password_digest" value={password_digest} onChange={this.handleChange} />
+          </div>
           <br />
           <button type="submit"> submit</button>
         </form>

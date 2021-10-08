@@ -56,14 +56,18 @@ class Login extends Component {
       return <Redirect to="/exercise" />;
     }
     return (
-      <div>
+      <div className="text-center rounded-circle mt-4 w-75 py-5 mx-auto bg-warning ">
         <h1>login</h1>
         <form onSubmit={this.handleSubmit}>
-          <input placeholder="email" type="text" value={username} name="username" onChange={(e) => this.handleChange(e)} />
+          <div className="form-group">
+            <input className="rounded" placeholder="email" type="text" value={username} name="username" onChange={(e) => this.handleChange(e)} />
+          </div>
           <br />
-          <input placeholder="password" type="password" value={passwd} name="passwd" onChange={(e) => this.handleChange(e)} />
+          <div className="form-group">
+            <input className="rounded" placeholder="password" type="password" value={passwd} name="passwd" onChange={(e) => this.handleChange(e)} />
+          </div>
           <br />
-          <button type="submit"> submit</button>
+          <button type="submit" className="btn btn-primary"> submit</button>
         </form>
         <p>
           <Link
